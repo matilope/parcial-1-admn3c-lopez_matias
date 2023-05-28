@@ -24,6 +24,10 @@ strong {
     font-weight: normal;
 }
 
+button, input, .alert, .toast-header, .toast-body, a {
+    border-radius: 0 !important;
+}
+
 
 /* NAV */
 
@@ -84,7 +88,6 @@ a.active {
 .menu-btn span::before,
 .menu-btn span::after {
     background: #1a156b;
-    border-radius: 3px;
     content: '';
     position: absolute;
     width: 40px;
@@ -253,11 +256,7 @@ iframe {
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 1.3;
-    margin: 1rem 0;
-}
-
-.products .btn {
-    border-radius: 0;
+    margin: 0.5rem 0 1rem 0;
 }
 
 .price-container {
@@ -284,12 +283,6 @@ iframe {
 
 .search input {
     width: 360px;
-    border-radius: 0;
-}
-
-.dropdown button,
-.dropdown-menu {
-    border-radius: 0;
 }
 
 .dropdown-item {
@@ -414,18 +407,10 @@ iframe {
     font-size: 2.5rem;
 }
 
-.product-unique button {
-    border-radius: 0;
-}
-
 .toast {
     position: fixed;
     top: 0;
     right: 0;
-}
-
-.toast-header {
-    border-radius: 0;
 }
 
 .toast-body {

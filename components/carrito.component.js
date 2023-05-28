@@ -2,8 +2,8 @@ export const Carrito = Vue.component('carrito', {
     template: `
     <div v-show="showLocal" class="carrito">
         <button @click="this.$parent.toggleCart" class="btn btn-close"></button>
-        <h2>Carrito de compras</h2>
         <template v-if="!allowAddress && !allowCard">
+            <h2>Carrito de compras</h2>
             <ul v-if="hasProducts" class="my-3" v-for="(item, index) in local" :key="index">
                 <li class="li-image"><img :src="item.imagenes[0]" :alt="item.titulo" /></li>
                 <li class="li-title">{{item.titulo}}</li>
@@ -27,6 +27,7 @@ export const Carrito = Vue.component('carrito', {
             </div>
         </template>
         <template v-if="allowAddress">
+            <h2>Datos personales</h2>
             <form v-if="!hasAddress" class="my-3" @submit.prevent="saveAddressData">
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
@@ -59,6 +60,7 @@ export const Carrito = Vue.component('carrito', {
             </div>
         </template>
         <template v-if="allowCard">
+            <h2>Información de pago</h2>
             <form v-if="!hasCard" class="my-3" @submit.prevent="saveCardData">
                 <div class="mb-3">
                     <label for="numeroTarjeta" class="form-label">Número de tarjeta</label>
@@ -156,9 +158,6 @@ export const Carrito = Vue.component('carrito', {
             dni: ''
         }
     },
-    destroy() {
-        this.alertIncrease = false;
-    },
     methods: {
         decreaseItem(index) {
             const item = this.local.splice(index, 1)[0];
@@ -206,6 +205,9 @@ export const Carrito = Vue.component('carrito', {
                 this.alertIncrease = true;
             }
             this.refreshLocal();
+            setTimeout(()=>{
+                this.alertIncrease = false;
+            }, 3000);
         },
         deleteItem(index) {
             Swal.fire({
