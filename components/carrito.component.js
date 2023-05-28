@@ -43,7 +43,7 @@ export const Carrito = Vue.component('carrito', {
                 </div>
                 <div class="mb-3">
                     <label for="fecha" class="form-label">Fecha de entrega</label>
-                    <input type="date" class="form-control" id="fecha" :min="new Date().toISOString().split('T')[0]" max="2023-07-31" v-model="userDeliveryDate" required />
+                    <input type="date" class="form-control" id="fecha" :min="new Date(new Date().setDate(new Date().getDate() + 1)).toISOString().split('T')[0]" max="new Date(new Date().setMonth(new Date().getMonth() + 2 + ((new Date().getMonth() + 2) % 12 > new Date().getMonth() ? 0 : 12))).toISOString().split('T')[0]" v-model="userDeliveryDate" required />
                 </div>
                 <input class="btn btn-md btn-primary my-3" type="submit" value="Guardar" />
             </form>
