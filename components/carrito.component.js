@@ -43,7 +43,7 @@ export const Carrito = Vue.component('carrito', {
                 </div>
                 <div class="mb-3">
                     <label for="fecha" class="form-label">Fecha de entrega</label>
-                    <input type="date" class="form-control" id="fecha" :min="new Date(new Date().setDate(new Date().getDate() + 1)).toISOString().split('T')[0]" max="new Date(new Date().setMonth(new Date().getMonth() + 2 + ((new Date().getMonth() + 2) % 12 > new Date().getMonth() ? 0 : 12))).toISOString().split('T')[0]" v-model="userDeliveryDate" required />
+                    <input type="date" class="form-control" id="fecha" :min="minDate" :max="maxDate" v-model="userDeliveryDate" required />
                 </div>
                 <input class="btn btn-md btn-primary my-3" type="submit" value="Guardar" />
             </form>
@@ -136,6 +136,14 @@ export const Carrito = Vue.component('carrito', {
                 total += item.precio * item.cantidad;
             });
             return total;
+        },
+        minDate() {
+            let fecha = new Date();
+            return new Date(fecha.setDate(fecha.getDate() + 1)).toISOString().split('T')[0];
+        },
+        maxDate() {
+            let fecha = new Date();
+            return new Date(fecha.setMonth(fecha.getMonth() + 2)).toISOString().split('T')[0];
         }
     },
     data: function () {
@@ -205,7 +213,7 @@ export const Carrito = Vue.component('carrito', {
                 this.alertIncrease = true;
             }
             this.refreshLocal();
-            setTimeout(()=>{
+            setTimeout(() => {
                 this.alertIncrease = false;
             }, 3000);
         },
@@ -274,10 +282,12 @@ export const Carrito = Vue.component('carrito', {
                     'error'
                 )
             } else {
-                if(this.userDeliveryDate <= new Date().toISOString().split('T')[0]){
+                let min = new Date().toISOString().split('T')[0];
+                let max = new Date(new Date().setMonth(new Date().getMonth() + 2)).toISOString().split("T")[0];
+                if (this.userDeliveryDate <= min || this.userDeliveryDate > max) {
                     Swal.fire(
                         'La fecha no es correcta',
-                        'La fecha debe ser al menos un día mayor a la actual',
+                        'La fecha debe ser al menos un día mayor a la actual y como máximo dos meses más a la fecha actual',
                         'error'
                     )
                     return;
@@ -346,7 +356,7 @@ export const Carrito = Vue.component('carrito', {
                     return;
                 }
 
-                if(new Date(Date.now()).toISOString().split("T")[0].split("-", 2).join("-") >= `${this.dateYear}-0${this.dateMonth+1}`) {
+                if (new Date(Date.now()).toISOString().split("T")[0].split("-", 2).join("-") >= `${this.dateYear}-0${this.dateMonth + 1}`) {
                     Swal.fire(
                         'La fecha de vencimiento no es correcta',
                         'Debe ser igual o mayor al mes y año en el que nos encontramos',
@@ -355,7 +365,7 @@ export const Carrito = Vue.component('carrito', {
                     return;
                 }
 
-                if(isNaN(this.dni)) {
+                if (isNaN(this.dni)) {
                     Swal.fire(
                         'El DNI no es correcto',
                         'El DNI debe contener únicamente números',
