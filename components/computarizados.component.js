@@ -9,7 +9,7 @@ export const Computarizados = Vue.component('computarizados', {
             <div class="products-body">
                 <h4>{{product.titulo | resizeTitle}}</h4>
                 <span class="d-block">{{product.apertura}}x{{product.distancia_focal}}mm</span>
-                <router-link :to="'/producto/'+product.id+'#product'" class="btn btn-outline-secondary mt-3">
+                <router-link :to="'/productos/#productos'" class="btn btn-outline-secondary mt-3">
                     Ver más
                 </router-link>
             </div>  
@@ -22,17 +22,5 @@ export const Computarizados = Vue.component('computarizados', {
             let splitDone = value.split(" ");
             return `${splitDone?.[0]} ${splitDone?.[1]}`;
         }
-    },
-    computed: {
-    },
-    mounted() {
-    },
-    updated() {
-    },
-    data: function () {
-        return {
-        }
-    },
-    methods: {
     }
 });
