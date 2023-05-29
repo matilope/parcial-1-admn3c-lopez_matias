@@ -12,35 +12,7 @@ export const app = new Vue({
   router,
   data: {
     local: null,
-    showLocal: false,
-    productUnique: null
-  },
-  beforeCreate() {
-    console.log("Se va a crear el componente");
-  },
-  created() {
-    console.log("Se ha creado el componente");
-  },
-  beforeMount() {
-    console.log("Se va a montar el componente");
-  },
-  mounted() {
-    console.log("Se ha montado el componente");
-  },
-  beforeUpdate() {
-    console.log('Se va a actualizar el componente');
-  },
-  updated() {
-    console.log('Se ha actualizo el componente');
-  },
-  destroyed() {
-    console.log('Se ha destruido el componente');
-  },
-  beforeUnmount() {
-    console.log('Se va a desmontar el componente');
-  },
-  unmounted() {
-    console.log('Se ha desmontado el componente');
+    showLocal: false
   },
   methods: {
     openNavList() {
@@ -63,9 +35,6 @@ export const app = new Vue({
     toggleCart() {
       this.openNavList();
       this.showLocal = !this.showLocal;
-    },
-    resetProductUnique() {
-      this.productUnique = null;
     }
   }
 })
