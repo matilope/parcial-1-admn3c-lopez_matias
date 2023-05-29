@@ -44,7 +44,7 @@
             <h1>Explora el cosmos</h1>
         </div>
 
-        <carrito :local.sync="local" :show-local="showLocal"></carrito>
+        <carrito @toggle-cart="toggleCart" @open-nav-list="openNavList" :local.sync="local" :show-local="showLocal"></carrito>
 
         <main class="container my-5">
             <router-view></router-view>

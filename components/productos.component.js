@@ -49,7 +49,7 @@ export const Productos = Vue.component('productos', {
             </article>
         </template>
         <template v-else>
-            <producto :productUnique="productUnique"></producto>
+            <producto :product-unique="productUnique"></producto>
         </template>
     </section>
     `,
@@ -131,9 +131,9 @@ export const Productos = Vue.component('productos', {
                     imagenes: ['imagenes/telescopios/6/celestron_125_1250_1.png', 'imagenes/telescopios/6/celestron_125_1250_2.png', 'imagenes/telescopios/6/celestron_125_1250_3.png']
                 }
             ],
-            productUnique: null,
             searchInput: '',
-            searchProducts: null
+            searchProducts: null,
+            productUnique: null
         }
     },
     methods: {

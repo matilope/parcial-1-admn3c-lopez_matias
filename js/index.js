@@ -12,7 +12,8 @@ export const app = new Vue({
   router,
   data: {
     local: null,
-    showLocal: false
+    showLocal: false,
+    productUnique: null
   },
   beforeCreate() {
     console.log("Se va a crear el componente");
@@ -62,6 +63,9 @@ export const app = new Vue({
     toggleCart() {
       this.openNavList();
       this.showLocal = !this.showLocal;
+    },
+    resetProductUnique() {
+      this.productUnique = null;
     }
   }
 })

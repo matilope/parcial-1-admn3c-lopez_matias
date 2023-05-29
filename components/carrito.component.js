@@ -1,7 +1,7 @@
 export const Carrito = Vue.component('carrito', {
     template: `
     <div v-show="showLocal" class="carrito">
-        <button @click="this.$parent.toggleCart" class="btn btn-close"></button>
+        <button @click="$emit('toggle-cart')" class="btn btn-close"></button>
         <template v-if="!allowAddress && !allowCard">
             <h2>Carrito de compras</h2>
             <ul v-if="hasProducts" class="my-3" v-for="(item, index) in local" :key="index">
@@ -415,8 +415,8 @@ export const Carrito = Vue.component('carrito', {
             localStorage.removeItem("carrito");
             this.refreshLocal();
             this.show(0);
-            this.$parent.toggleCart();
-            this.$parent.openNavList();
+            this.$emit('toggle-cart');
+            this.$emit('open-nav-list');
             let timerInterval;
             Swal.fire({
                 title: 'La compra se realizó con éxito',
