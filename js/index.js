@@ -19,18 +19,9 @@ export const app = new Vue({
       this.$refs.menuBtn.classList.toggle('active');
       this.$refs.navMenu.classList.toggle('show');
     },
-    scrollToAnchor(e) {
-      e.preventDefault();
+    navClick() {
       this.openNavList();
       this.$children[3].productUnique = null;
-      const anchor = e.target.getAttribute('href')?.split("#/")?.[1].split("#")?.[1];
-      const element = document.getElementById(anchor);
-      if (element) {
-        window.scrollTo({
-          top: element.offsetTop,
-          behavior: 'smooth'
-        });
-      }
     },
     toggleCart() {
       this.openNavList();

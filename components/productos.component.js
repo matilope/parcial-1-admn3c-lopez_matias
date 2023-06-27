@@ -2,30 +2,32 @@ export const Productos = Vue.component('productos', {
     template: `
     <section class="row" id="productos">
         <template v-if="!productUnique">
-            <form class="search" @submit.prevent="search">
-                <input class="form-control form-control-lg" placeholder="Buscar.." type="search" v-model="searchInput" />
-            </form>
-            <div class="dropdown-container my-5">
-                <div class="dropdown">
-                    <button class="btn btn-lg btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Precio
-                    </button>
-                    <ul class="dropdown-menu">
-                    <li class="dropdown-item" @click="priceOrder(true)">Menor precio</li>
-                    <li class="dropdown-item" @click="priceOrder(false)">Mayor precio</li>
-                    </ul>
-                </div>
-                <div class="dropdown">
-                    <button class="btn btn-lg btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Apertura
-                    </button>
-                    <ul class="dropdown-menu">
-                    <li class="dropdown-item" @click="apertureOrder(true)">Menor apertura</li>
-                    <li class="dropdown-item" @click="apertureOrder(false)">Mayor apertura</li>
-                    </ul>
+            <div class="form-dropdown-container mt-3 mb-5">
+                <form class="search" @submit.prevent="search">
+                    <input class="form-control form-control-lg" placeholder="Buscar.." type="search" v-model="searchInput" />
+                </form>
+                <div class="dropdown-container">
+                    <div class="dropdown">
+                        <button class="btn btn-lg btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Precio
+                        </button>
+                        <ul class="dropdown-menu">
+                        <li class="dropdown-item" @click="priceOrder(true)">Menor precio</li>
+                        <li class="dropdown-item" @click="priceOrder(false)">Mayor precio</li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-lg btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Apertura
+                        </button>
+                        <ul class="dropdown-menu">
+                        <li class="dropdown-item" @click="apertureOrder(true)">Menor apertura</li>
+                        <li class="dropdown-item" @click="apertureOrder(false)">Mayor apertura</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <h2 class="mb-5">Catálogo de productos</h2>
+            <h2 class="mb-5 mt-3">Catálogo de productos</h2>
             <div v-if="!searchProducts?.length && searchProducts != null">
                 <div class="alert alert-warning" role="alert">
                     <p class="mb-0 lead">La búsqueda no ha sido exitosa, 
