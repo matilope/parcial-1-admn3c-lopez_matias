@@ -8,7 +8,7 @@ export const Inicio = Vue.component('inicio', {
                 Ya seas un apasionado principiante o un astrónomo experimentado, encontrarás todo lo que necesitas para disfrutar de la observación astronómica. Con nuestros equipos podrás adentrarte en el cosmos y descubrir la belleza de las estrellas, planetas, galaxias y mucho más.
                 </p>
             </div>
-            <div class="col-sm-12 col-xl-6"">
+            <div class="col-sm-12 col-xl-6">
                 <img class="img-fluid" src="imagenes/inicio/inicio.jpg" alt="Nuestra tienda física en donde se ven varios modelos de telescopio" />
             </div>
         </template>
